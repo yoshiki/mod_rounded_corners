@@ -1,0 +1,29 @@
+
+APXS=@APXS@
+PACKAGE = @PACKAGE_NAME@
+VERSION = @PACKAGE_VERSION@
+PACKAGEDIR = $(PACKAGE)-$(VERSION)
+PACKAGETGZ = $(PACKAGE)-$(VERSION).tar.gz
+
+INCLUDES=-I/usr/local/include -Iinclude `@MAGICKWANDCFG@ --cflags`
+LIBS=-L/usr/local/lib `@MAGICKWANDCFG@ --libs`
+
+all:
+	$(APXS) -c $(INCLUDES) $(LIBS) mod_rounded_corners.c
+
+install:
+	$(APXS) -ia mod_rounded_corners.la
+
+clean:
+	rm -rf *.o *.a *.so *.lo *.la *.slo a.out .libs \
+
+distclean: clean
+	rm -rf Makefile config.cache config.log config.status autom4te.cache $(PACKAGETGZ) $(PACKAGEDIR)
+
+dist:
+	mkdir $(PACKAGEDIR)
+	autoconf
+	cp mod_rounded_corners.c configure configure.in Makefile.in README install-sh INSTALL $(PACKAGEDIR)
+	tar cvzf $(PACKAGETGZ) $(PACKAGEDIR)
+	rm -rf $(PACKAGEDIR)
+

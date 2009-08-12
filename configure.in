@@ -1,0 +1,32 @@
+AC_PREREQ(2.13)
+AC_INIT(mod_rounded_corners.c, 0.01, foo@example.com)
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+
+AC_ARG_WITH(imlib2-config,
+            [  --with-magickwand-config=FILE location of the MagickWand-config program],
+            [ MAGICKWANDCFG="$withval" ], [ MAGICKWANDCFG=no ])
+
+if test "$MAGICKWANDCFG" = no; then
+   AC_PATH_PROG(MAGICKWANDCFG, MagickWand-config, no,
+               /bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin)
+fi
+
+AC_ARG_WITH(apxs,
+            [  --with-apxs=FILE location of the apxs program],
+            [ APXS="$withval"], [ APXS=no ])
+
+if test "$APXS" = no; then
+    AC_PATH_PROG(APXS, apxs, no,
+                /usr/local/apache2/bin:/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin)
+fi
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_HEADER_STDC
+AC_CHECK_FUNCS(regcomp)
+
+AC_OUTPUT(Makefile)
+
