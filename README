@@ -1,0 +1,31 @@
+* What is mod_rounded_corners?
+
+This is apache module generate rounded corners.
+
+* Requirements
+
+ImageMagick - http://www.imagemagick.org/
+
+* Hot to install?
+
+% ./configure
+% make
+# make install
+
+* How to Setting?
+
+In httpd.conf
+
+  LoadModule rounded_corners_module modules/mod_rounded_corners.so
+
+  <Location />
+  Set-Handler rounded-corners
+  </Location>
+
+* URI example
+
+Ex. http://example.com/ffffff/000000/20.gif
+
+First chunk(ffffff) is foreground color, Second chunk(000000) is
+background color and Third chund is radius(20) and format(gif) output.
+
