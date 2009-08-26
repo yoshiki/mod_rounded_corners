@@ -22,7 +22,7 @@ In httpd.conf
   <VirtualHost *:80>
   ServerName rounded-corners.example.com
   <Location />
-  Set-Handler rounded-corners
+  SetHandler rounded-corners
   </Location>
   </VirtualHost>
 
