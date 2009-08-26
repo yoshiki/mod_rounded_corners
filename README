@@ -8,6 +8,8 @@ ImageMagick - http://www.imagemagick.org/
 
 * Hot to install?
 
+% autoconf
+% automake
 % ./configure
 % make
 # make install
