@@ -6,14 +6,14 @@ mod_rounded_corners is apache module to generate rounded corners.
 
 ImageMagick - http://www.imagemagick.org/
 
-* How to install?
+* Installation
 
 % autoconf
 % ./configure
 % make
 # make install
 
-* How to Setting?
+* Setting
 
 In httpd.conf
 
